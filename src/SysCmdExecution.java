@@ -50,7 +50,11 @@ public class SysCmdExecution {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		String[] cmd = { "/bin/sh", "-c", "ps -ef | grep pinaki" } ; 
+		if ( args.length < 1 ) {
+			throw new IllegalArgumentException("Error : Input arguments cannot be null.") ;
+		}
+		
+		String[] cmd = { "/bin/sh", "-c", args[0] } ; 
 		// TODO Auto-generated method stub
 		executeCommand(cmd);
 	}
